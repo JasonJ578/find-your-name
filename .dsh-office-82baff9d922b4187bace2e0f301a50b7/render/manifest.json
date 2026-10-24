@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "backend": "native",
+  "rasterEngine": "libreoffice",
+  "source": "saved",
+  "inputPath": "F:\\Find Your Name\\新手教程\\01-新手配置教程.docx",
+  "sourceSha256": "757097c5ebdcfc23c4a4ab1f2d20b2d21058ddb38c9c289e06373159aa6b5a20",
+  "dpi": 144,
+  "pageCount": 9,
+  "images": [
+    {
+      "index": 1,
+      "page": 2,
+      "path": "F:\\Find Your Name\\.dsh-office-82baff9d922b4187bace2e0f301a50b7\\render\\page-0001.png",
+      "width": 1191,
+      "height": 1684,
+      "rectangle": {
+        "x": 0,
+        "y": 0,
+        "width": 793.7333333333333,
+        "height": 1122.5333333333333
+      },
+      "byteLength": 98983
+    },
+    {
+      "index": 2,
+      "page": 3,
+      "path": "F:\\Find Your Name\\.dsh-office-82baff9d922b4187bace2e0f301a50b7\\render\\page-0002.png",
+      "width": 1191,
+      "height": 1684,
+      "rectangle": {
+        "x": 0,
+        "y": 0,
+        "width": 793.7333333333333,
+        "height": 1122.5333333333333
+      },
+      "byteLength": 82175
+    },
+    {
+      "index": 3,
+      "page": 7,
+      "path": "F:\\Find Your Name\\.dsh-office-82baff9d922b4187bace2e0f301a50b7\\render\\page-0003.png",
+      "width": 1191,
+      "height": 1684,
+      "rectangle": {
+        "x": 0,
+        "y": 0,
+        "width": 793.7333333333333,
+        "height": 1122.5333333333333
+      },
+      "byteLength": 74051
+    },
+    {
+      "index": 4,
+      "page": 8,
+      "path": "F:\\Find Your Name\\.dsh-office-82baff9d922b4187bace2e0f301a50b7\\render\\page-0004.png",
+      "width": 1191,
+      "height": 1684,
+      "rectangle": {
+        "x": 0,
+        "y": 0,
+        "width": 793.7333333333333,
+        "height": 1122.5333333333333
+      },
+      "byteLength": 105390
+    }
+  ],
+  "missingFonts": [
+    "Courier"
+  ]
+}
