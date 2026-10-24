@@ -7,3 +7,7 @@ node_modules/
 *.sketch
 ~$*
 .vscode/
+__pycache__/
+*.pyc
+.html-workbench/
+docs/交接-本地.md

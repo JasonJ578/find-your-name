@@ -4,186 +4,244 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>微界 · 首页</title>
-  <link rel="stylesheet" href="../assets/css/theme.css">
-  <link rel="stylesheet" href="../assets/css/layout.css">
+<!-- INLINE-CSS: 由 assets/css 生成，改样式请改源文件后运行 tools/inline-css.py -->
+<style>
+:root {
+  --bg: #f2f3f5;
+  --surface: #ffffff;
+  --surface-2: #f7f8fa;
+  --text: #1f2329;
+  --text-2: #4e5969;
+  --muted: #8a919c;
+  --line: #e5e6eb;
+  --brand: #ff8200;
+  --brand-strong: #e67300;
+  --brand-soft: #fff3e6;
+  --hot: #eb7350;
+  --link: #1a6fd4;
+  --ok: #2b8a3e;
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --maxw: 1120px;
+  --header-h: 56px;
+  --font: system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.6;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+.container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--sp-4); }
+
+/* 头像 */
+.avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: inline-grid; place-items: center; flex: 0 0 auto;
+  background: linear-gradient(135deg, #ffd8a8, #ffa94d);
+  color: #7a3b00; font-weight: 700; font-size: 16px;
+}
+.avatar-sm { width: 32px; height: 32px; font-size: 12px; }
+.avatar-lg { width: 72px; height: 72px; font-size: 24px; }
+.avatar-blue { background: linear-gradient(135deg, #d0ebff, #74c0fc); color: #0b4a8f; }
+.avatar-green { background: linear-gradient(135deg, #d3f9d8, #69db7c); color: #14532d; }
+.avatar-purple { background: linear-gradient(135deg, #e5dbff, #b197fc); color: #3b1d8f; }
+.avatar-gray { background: linear-gradient(135deg, #f1f3f5, #ced4da); color: #495057; }
+
+/* 顶栏 */
+.wb-header { position: sticky; top: 0; z-index: 30; background: #fff; border-bottom: 1px solid var(--line); }
+.wb-header-inner { height: var(--header-h); display: flex; align-items: center; gap: var(--sp-5); }
+.wb-logo { display: inline-flex; align-items: center; gap: 8px; color: var(--text); font-weight: 800; font-size: 17px; letter-spacing: .02em; }
+.wb-logo:hover { text-decoration: none; }
+.wb-logo-mark { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; background: var(--brand); color: #fff; font-size: 15px; }
+.wb-search { position: relative; flex: 1; max-width: 520px; }
+.wb-search::before { content: "⌕"; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 16px; }
+.wb-search input { width: 100%; height: 36px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface-2); padding: 0 16px 0 38px; color: var(--text); outline: none; }
+.wb-search input:focus { background: #fff; border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-soft); }
+.wb-header-actions { margin-left: auto; display: flex; align-items: center; gap: var(--sp-4); }
+.wb-header-actions a { color: var(--text-2); font-size: 13px; }
+
+/* 三栏 */
+.wb-body {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 600px) 300px;
+  gap: var(--sp-4);
+  justify-content: center;
+  align-items: start;
+  padding: var(--sp-4) var(--sp-4) var(--sp-6);
+}
+
+/* 左侧 */
+.wb-left { position: sticky; top: calc(var(--header-h) + var(--sp-4)); display: grid; gap: var(--sp-3); }
+.wb-mini { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: var(--sp-4); text-align: center; }
+.wb-mini .avatar { margin: 0 auto var(--sp-2); }
+.wb-mini strong { display: block; font-size: 14px; }
+.wb-mini span { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+.wb-nav { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: var(--sp-2); }
+.wb-nav a { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; color: var(--text); font-size: 14px; }
+.wb-nav a:hover { background: var(--surface-2); text-decoration: none; }
+.wb-nav a.is-active { background: var(--brand-soft); color: var(--brand-strong); font-weight: 600; }
+.wb-nav .count { margin-left: auto; color: var(--muted); font-size: 12px; }
+
+/* 发布框 */
+.wb-composer { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: var(--sp-4); margin-bottom: var(--sp-3); }
+.wb-composer-row { display: flex; gap: var(--sp-3); }
+.wb-composer textarea { flex: 1; min-height: 46px; border: 0; outline: 0; resize: none; background: transparent; color: var(--text); }
+.wb-composer textarea::placeholder { color: var(--muted); }
+.wb-composer-bar { display: flex; align-items: center; gap: var(--sp-4); margin-top: var(--sp-2); padding-top: var(--sp-3); border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+.wb-composer-bar .btn { margin-left: auto; }
+
+/* 按钮 */
+.btn { display: inline-flex; align-items: center; justify-content: center; height: 32px; padding: 0 16px; border: 1px solid transparent; border-radius: 16px; background: var(--brand); color: #fff; font-size: 13px; font-weight: 600; }
+.btn:hover { background: var(--brand-strong); text-decoration: none; }
+.btn-ghost { background: #fff; border-color: var(--line); color: var(--text-2); }
+.btn-ghost:hover { border-color: var(--brand); color: var(--brand); background: #fff; }
+.btn-sm { height: 28px; padding: 0 12px; font-size: 12px; }
+
+/* 分类标签 */
+.wb-tabs { display: flex; gap: var(--sp-5); background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 0 var(--sp-4); margin-bottom: var(--sp-3); }
+.wb-tab { padding: 12px 0; border-bottom: 2px solid transparent; color: var(--text-2); font-size: 14px; }
+.wb-tab:hover { color: var(--brand); text-decoration: none; }
+.wb-tab.is-active { color: var(--text); font-weight: 600; border-bottom-color: var(--brand); }
+
+/* 帖子 */
+.wb-post { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: var(--sp-4); margin-bottom: var(--sp-3); }
+.wb-post-head { display: flex; gap: var(--sp-3); align-items: flex-start; }
+.wb-post-meta { flex: 1; min-width: 0; }
+.wb-user { display: inline-flex; align-items: center; gap: 6px; color: var(--text); font-size: 14px; font-weight: 600; }
+.wb-user:hover { color: var(--brand); text-decoration: none; }
+.wb-v { display: inline-grid; place-items: center; width: 14px; height: 14px; border-radius: 50%; background: var(--brand); color: #fff; font-size: 9px; font-weight: 700; }
+.wb-time { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+.wb-more { border: 0; background: transparent; color: var(--muted); font-size: 16px; letter-spacing: .12em; }
+.wb-post-text { margin: var(--sp-3) 0 0; font-size: 15px; line-height: 1.72; color: var(--text); }
+.wb-post-text .hashtag { color: var(--hot); }
+.wb-post-text .mention { color: var(--link); }
+.wb-post-media { display: grid; gap: 4px; margin-top: var(--sp-3); border-radius: var(--radius-sm); overflow: hidden; }
+.wb-post-media.is-2 { grid-template-columns: 1fr 1fr; }
+.wb-media { aspect-ratio: 4 / 3; display: grid; place-items: center; background: linear-gradient(135deg, rgba(255,130,0,.10), rgba(26,111,212,.08)), repeating-linear-gradient(45deg, #f1f3f5 0 10px, #eceff2 10px 20px); color: var(--muted); font-size: 12px; letter-spacing: .08em; }
+.wb-post-actions { display: flex; align-items: center; gap: var(--sp-5); margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+.wb-action { display: inline-flex; align-items: center; gap: 6px; padding: 0; border: 0; background: transparent; color: var(--muted); }
+.wb-action:hover { color: var(--brand); text-decoration: none; }
+
+/* 右侧 */
+.wb-right { position: sticky; top: calc(var(--header-h) + var(--sp-4)); display: grid; gap: var(--sp-3); }
+.wb-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: var(--sp-4); }
+.wb-card-title { display: flex; align-items: center; justify-content: space-between; margin: 0 0 var(--sp-2); font-size: 14px; font-weight: 600; }
+.wb-card-title a { color: var(--muted); font-size: 12px; font-weight: 400; }
+.wb-hot { margin: 0; padding: 0; list-style: none; counter-reset: hot; }
+.wb-hot li { counter-increment: hot; display: flex; align-items: baseline; gap: 10px; padding: 7px 0; }
+.wb-hot li::before { content: counter(hot); flex: 0 0 16px; width: 16px; color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.wb-hot li:nth-child(-n+3)::before { color: var(--hot); font-weight: 700; }
+.wb-hot a { color: var(--text-2); font-size: 13px; }
+.wb-hot a:hover { color: var(--brand); text-decoration: none; }
+.wb-hot-tag { margin-left: auto; padding: 1px 4px; border-radius: 3px; background: var(--hot); color: #fff; font-size: 10px; }
+.wb-person { display: flex; align-items: center; gap: var(--sp-2); padding: 8px 0; }
+.wb-person-info { flex: 1; min-width: 0; }
+.wb-person-info strong { display: block; font-size: 13px; }
+.wb-person-info span { display: block; color: var(--muted); font-size: 11px; }
+.wb-loadmore { width: 100%; height: 40px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; color: var(--text-2); font-size: 13px; }
+.wb-loadmore:hover { border-color: var(--brand); color: var(--brand); }
+
+/* 详情页 */
+.wb-detail { max-width: 600px; margin: 0 auto; padding: var(--sp-4) var(--sp-4) var(--sp-6); }
+.wb-back { display: inline-flex; align-items: center; gap: 6px; margin-bottom: var(--sp-3); color: var(--text-2); font-size: 13px; }
+.wb-back:hover { color: var(--brand); text-decoration: none; }
+.wb-comments { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: var(--sp-4); margin-top: var(--sp-3); }
+.wb-comments-title { margin: 0 0 var(--sp-2); font-size: 15px; }
+.wb-comment { display: flex; gap: var(--sp-3); padding: var(--sp-3) 0; border-top: 1px solid var(--line); }
+.wb-comment:first-of-type { border-top: 0; }
+.wb-comment-body { flex: 1; min-width: 0; }
+.wb-comment-head { display: flex; align-items: baseline; gap: 8px; }
+.wb-comment-author { font-size: 13px; font-weight: 600; }
+.wb-comment-time { color: var(--muted); font-size: 11px; }
+.wb-comment-text { margin: 3px 0 0; color: var(--text-2); font-size: 14px; line-height: 1.65; }
+.wb-comment-box { display: flex; gap: var(--sp-3); margin-top: var(--sp-4); padding-top: var(--sp-4); border-top: 1px solid var(--line); }
+.wb-comment-box input { flex: 1; height: 36px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface-2); padding: 0 14px; outline: none; }
+.wb-comment-box input:focus { border-color: var(--brand); background: #fff; }
+
+/* 个人主页 */
+.wb-profile { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.wb-profile-cover { height: 150px; background: linear-gradient(135deg, #ffd8a8, #ff922b 55%, #f76707); }
+.wb-profile-main { padding: 0 var(--sp-5) var(--sp-5); }
+.wb-profile-avatar { margin-top: -36px; border: 4px solid #fff; }
+.wb-profile-name { display: flex; align-items: center; gap: 8px; margin: 8px 0 2px; font-size: 20px; }
+.wb-profile-bio { margin: 6px 0; color: var(--text-2); font-size: 13px; }
+.wb-profile-stats { display: flex; gap: var(--sp-5); color: var(--text-2); font-size: 13px; }
+.wb-profile-stats b { color: var(--text); }
+.wb-profile-actions { margin-top: var(--sp-3); }
+.wb-profile + .wb-tabs { margin-top: var(--sp-3); }
+
+/* 页脚 */
+.wb-footer { padding: var(--sp-5) 0 var(--sp-6); color: var(--muted); font-size: 12px; text-align: center; }
+.wb-footer a { margin: 0 6px; color: var(--muted); }
+
+/* 封面 */
+.cover-body { background: #0f1115; }
+.cover { min-height: 100vh; display: grid; place-items: center; padding: var(--sp-5); background: radial-gradient(1200px 600px at 50% -10%, #1d2735 0%, #0f1115 60%); color: #e8e8ea; }
+.cover-inner { max-width: 560px; text-align: center; }
+.cover-kicker { margin: 0 0 var(--sp-4); color: #8b8f98; font-size: 12px; letter-spacing: .3em; }
+.cover-title { margin: 0 0 var(--sp-3); font-size: clamp(36px, 8vw, 72px); line-height: 1.05; letter-spacing: .1em; }
+.cover-desc { margin: 0 0 var(--sp-6); color: #9aa1ab; }
+.cover-btn { display: inline-block; padding: 12px 30px; border-radius: 999px; background: var(--brand); color: #fff; font-weight: 600; }
+.cover-btn:hover { background: var(--brand-strong); text-decoration: none; }
+.cover-note { margin-top: var(--sp-5); color: #6b7280; font-size: 12px; }
+
+/* 响应式 */
+@media (max-width: 1120px) {
+  .wb-body { grid-template-columns: 180px minmax(0, 600px); }
+  .wb-right { display: none; }
+}
+@media (max-width: 900px) {
+  .wb-body { grid-template-columns: minmax(0, 600px); }
+  .wb-left { display: none; }
+}
+@media (max-width: 560px) {
+  .wb-header-inner { gap: var(--sp-3); }
+  .wb-logo-name { display: none; }
+  .wb-search { max-width: none; }
+  .wb-post { padding: var(--sp-3); border-radius: var(--radius-sm); }
+  .wb-post-actions { gap: var(--sp-4); }
+  .wb-detail { padding-left: var(--sp-3); padding-right: var(--sp-3); }
+  .wb-body { padding-left: var(--sp-3); padding-right: var(--sp-3); }
+}
+</style>
+<style data-grapesjs-overrides>
+* { box-sizing: border-box; } body {margin: 0;}#ikfkm{color:#ef1313;}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </head>
 <body>
-<!-- PAGE-MODE: flow -->
-
-<header class="wb-header">
-  <div class="container wb-header-inner">
-    <a class="wb-logo" href="../index.html">
-      <span class="wb-logo-mark">微</span>
-      <span class="wb-logo-name">微界</span>
-    </a>
-    <div class="wb-search">
-      <input type="search" placeholder="搜索微界内容" aria-label="搜索">
-    </div>
-    <nav class="wb-header-actions" aria-label="顶部导航">
-      <a href="index.html">首页</a>
-      <a href="profile-01.html">我</a>
-      <span class="avatar avatar-sm avatar-blue" aria-hidden="true">林</span>
-    </nav>
-  </div>
-</header>
-
-<div class="wb-body">
-
-  <aside class="wb-left">
-    <div class="wb-mini">
-      <span class="avatar avatar-blue" aria-hidden="true">林</span>
-      <strong>林晚</strong>
-      <span>@linwan</span>
-    </div>
-    <nav class="wb-nav" aria-label="侧边导航">
-      <a class="is-active" href="index.html">首页</a>
-      <a href="#">发现</a>
-      <a href="#">消息 <span class="count">3</span></a>
-      <a href="profile-01.html">我</a>
-    </nav>
-  </aside>
-
-  <main class="wb-feed">
-    <section class="wb-composer" aria-label="发布">
-      <div class="wb-composer-row">
-        <span class="avatar avatar-blue" aria-hidden="true">林</span>
-        <textarea placeholder="有什么新鲜事想分享给大家？" aria-label="发布内容"></textarea>
-      </div>
-      <div class="wb-composer-bar">
-        <span>图片</span>
-        <span>视频</span>
-        <span>表情</span>
-        <button class="btn btn-sm" type="button">发布</button>
-      </div>
-    </section>
-
-    <nav class="wb-tabs" aria-label="信息流分类">
-      <a class="wb-tab is-active" href="#">全部</a>
-      <a class="wb-tab" href="#">关注</a>
-      <a class="wb-tab" href="#">推荐</a>
-    </nav>
-
-    <article class="wb-post" data-post="p01">
-      <header class="wb-post-head">
-        <a href="profile-01.html" aria-label="林晚的主页"><span class="avatar avatar-blue" aria-hidden="true">林</span></a>
-        <div class="wb-post-meta">
-          <a class="wb-user" href="profile-01.html">林晚 <span class="wb-v">V</span></a>
-          <span class="wb-time">3 小时前 · 来自 微界网页版</span>
-        </div>
-        <button class="wb-more" type="button" aria-label="更多">···</button>
-      </header>
-      <p class="wb-post-text">昨晚 23:40 我还在公司，整层楼只剩我一个。走的时候，<span class="hashtag">#消防通道</span> 的门是开着的。</p>
-      <div class="wb-post-media">
-        <div class="wb-media">图片占位 · 消防通道</div>
-      </div>
-      <footer class="wb-post-actions">
-        <a class="wb-action" href="post-01.html">评论 12</a>
-        <button class="wb-action" type="button">转发 4</button>
-        <button class="wb-action" type="button">赞 27</button>
-      </footer>
-    </article>
-
-    <article class="wb-post" data-post="p02">
-      <header class="wb-post-head">
-        <a href="profile-01.html" aria-label="周叙的主页"><span class="avatar avatar-green" aria-hidden="true">周</span></a>
-        <div class="wb-post-meta">
-          <a class="wb-user" href="profile-01.html">周叙</a>
-          <span class="wb-time">5 小时前 · 来自 微界网页版</span>
-        </div>
-        <button class="wb-more" type="button" aria-label="更多">···</button>
-      </header>
-      <p class="wb-post-text">凌晨的江边，雾很大。桥上有人站了很久，一动不动。<span class="hashtag">#江湾路</span></p>
-      <div class="wb-post-media is-2">
-        <div class="wb-media">图片占位 · 江边 1</div>
-        <div class="wb-media">图片占位 · 江边 2</div>
-      </div>
-      <footer class="wb-post-actions">
-        <a class="wb-action" href="post-01.html">评论 8</a>
-        <button class="wb-action" type="button">转发 2</button>
-        <button class="wb-action" type="button">赞 19</button>
-      </footer>
-    </article>
-
-    <article class="wb-post" data-post="p03">
-      <header class="wb-post-head">
-        <span class="avatar avatar-purple" aria-hidden="true">匿</span>
-        <div class="wb-post-meta">
-          <span class="wb-user">匿名用户</span>
-          <span class="wb-time">7 小时前 · 来自 微界网页版</span>
-        </div>
-        <button class="wb-more" type="button" aria-label="更多">···</button>
-      </header>
-      <p class="wb-post-text">7 楼的消防通道，昨晚有人进去过吗？门禁记录显示 <strong>23:04</strong> 有人刷过卡。</p>
-      <footer class="wb-post-actions">
-        <a class="wb-action" href="post-01.html">评论 31</a>
-        <button class="wb-action" type="button">转发 6</button>
-        <button class="wb-action" type="button">赞 44</button>
-      </footer>
-    </article>
-
-    <article class="wb-post" data-post="p04">
-      <header class="wb-post-head">
-        <span class="avatar avatar-gray" aria-hidden="true">微</span>
-        <div class="wb-post-meta">
-          <span class="wb-user">微界新闻 <span class="wb-v">V</span></span>
-          <span class="wb-time">9 小时前 · 来自 微界网页版</span>
-        </div>
-        <button class="wb-more" type="button" aria-label="更多">···</button>
-      </header>
-      <p class="wb-post-text">【本地】江湾路一带凌晨停电两小时，原因待查。受影响小区包括江湾公寓、河畔花园。</p>
-      <footer class="wb-post-actions">
-        <a class="wb-action" href="post-01.html">评论 5</a>
-        <button class="wb-action" type="button">转发 12</button>
-        <button class="wb-action" type="button">赞 9</button>
-      </footer>
-    </article>
-
-    <button class="wb-loadmore" type="button">加载更多</button>
-  </main>
-
-  <aside class="wb-right">
-    <section class="wb-card">
-      <h2 class="wb-card-title">热搜榜 <a href="#">查看更多</a></h2>
-      <ol class="wb-hot">
-        <li><a href="post-01.html">消防通道的门</a><span class="wb-hot-tag">热</span></li>
-        <li><a href="post-01.html">23:04 门禁记录</a></li>
-        <li><a href="post-01.html">江湾路停电</a></li>
-        <li><a href="post-01.html">货梯</a></li>
-        <li><a href="post-01.html">江边雾夜</a></li>
-        <li><a href="post-01.html">7 楼加班</a></li>
-      </ol>
-    </section>
-
-    <section class="wb-card">
-      <h2 class="wb-card-title">可能感兴趣的人</h2>
-      <div class="wb-person">
-        <span class="avatar avatar-sm avatar-green" aria-hidden="true">周</span>
-        <div class="wb-person-info"><strong>周叙</strong><span>共同关注 3 人</span></div>
-        <button class="btn btn-ghost btn-sm" type="button">关注</button>
-      </div>
-      <div class="wb-person">
-        <span class="avatar avatar-sm avatar-purple" aria-hidden="true">匿</span>
-        <div class="wb-person-info"><strong>匿名用户</strong><span>共同关注 1 人</span></div>
-        <button class="btn btn-ghost btn-sm" type="button">关注</button>
-      </div>
-      <div class="wb-person">
-        <span class="avatar avatar-sm avatar-gray" aria-hidden="true">微</span>
-        <div class="wb-person-info"><strong>微界新闻</strong><span>官方账号</span></div>
-        <button class="btn btn-ghost btn-sm" type="button">关注</button>
-      </div>
-    </section>
-  </aside>
-
-</div>
-
-<footer class="wb-footer">
-  <div class="container">
-    <a href="#">关于微界</a>
-    <a href="#">帮助中心</a>
-    <a href="#">隐私</a>
-    <p>微界 · 虚构平台 · 仅用于解谜 demo</p>
-  </div>
-</footer>
-
+<header class="wb-header"><div class="container wb-header-inner"><a href="../index.html" class="wb-logo"><span class="wb-logo-mark">微</span><span class="wb-logo-name">微界</span></a><div class="wb-search"><input type="search" placeholder="搜索微界内容" aria-label="搜索"/></div><nav aria-label="顶部导航" class="wb-header-actions"><a href="index.html">首页</a><a href="profile-01.html">我</a><span aria-hidden="true" class="avatar avatar-sm avatar-blue">林</span></nav></div></header><div id="is6rz" class="wb-body"><aside class="wb-left"><div class="wb-mini"><span aria-hidden="true" class="avatar avatar-blue">林</span><strong>林晚</strong><span>@linwan</span></div><nav aria-label="侧边导航" class="wb-nav"><a href="index.html" class="is-active">首页</a><a href="#">发现</a><a href="#">消息 <span class="count">3</span></a><a href="profile-01.html">我</a></nav></aside><main class="wb-feed"><section aria-label="发布" class="wb-composer"><div class="wb-composer-row"><span aria-hidden="true" class="avatar avatar-blue">林</span><textarea placeholder="有什么新鲜事想分享给大家？" aria-label="发布内容"></textarea></div><div class="wb-composer-bar"><span>图片</span><span>视频</span><span>表情</span><button type="button" class="btn btn-sm">发布</button></div></section><nav aria-label="信息流分类" class="wb-tabs"><a href="#" class="wb-tab is-active">全部</a><a href="#" class="wb-tab">关注</a><a href="#" class="wb-tab">推荐</a></nav><article data-post="p01" id="i3s39" class="wb-post"><header class="wb-post-head"><a href="profile-01.html" aria-label="林晚的主页"><span aria-hidden="true" class="avatar avatar-blue">林</span></a><div class="wb-post-meta"><a href="profile-01.html" class="wb-user">林晚 <span class="wb-v">V</span></a><span id="im1yy" class="wb-time">3 小时前 · 来自 微界网页版</span></div><button type="button" aria-label="更多" class="wb-more">···</button></header><p id="ikfkm" class="wb-post-text">昨晚 23:40 我还在公<span id="ihwx7l"></span>司，整层<span id="ifgtsa">楼只剩我一只。</span>走的时候，<span class="hashtag" id="ijeju">#消防通道</span> 的门是开着的。</p><div class="wb-post-media"><div id="id6td" class="wb-media">图片占位 · 消防通道</div></div><footer class="wb-post-actions"><a href="post-01.html" class="wb-action">评论 12</a><button type="button" class="wb-action">转发 4</button><button type="button" class="wb-action">赞 27</button></footer></article><article data-post="p02" class="wb-post"><header class="wb-post-head"><a href="profile-01.html" aria-label="周叙的主页"><span aria-hidden="true" class="avatar avatar-green">周</span></a><div class="wb-post-meta"><a href="profile-01.html" class="wb-user">周叙</a><span class="wb-time">5 小时前 · 来自 微界网页版</span></div><button type="button" aria-label="更多" class="wb-more">···</button></header><p id="i4cx3y" class="wb-post-text">凌晨的江边，<span id="i88m7a">雾很大。桥上有人站了很久，一动不动</span>。<span class="hashtag">#江湾路</span></p><div class="wb-post-media is-2"><div class="wb-media">图片占位 · 江边 1</div><div class="wb-media">图片占位 · 江边 2</div></div><footer class="wb-post-actions"><a href="post-01.html" class="wb-action">评论 8</a><button type="button" class="wb-action">转发 2</button><button type="button" class="wb-action">赞 19</button></footer></article><article data-post="p03" class="wb-post"><header class="wb-post-head"><span aria-hidden="true" class="avatar avatar-purple">匿</span><div class="wb-post-meta"><span class="wb-user">匿名用户</span><span class="wb-time">7 小时前 · 来自 微界网页版</span></div><button type="button" aria-label="更多" class="wb-more">···</button></header><p class="wb-post-text">7 楼的消防通道，昨晚有人进去过吗？门禁记录显示 <strong>23:04</strong> 有人刷过卡。</p><footer class="wb-post-actions"><a href="post-01.html" class="wb-action">评论 31</a><button type="button" class="wb-action">转发 6</button><button type="button" class="wb-action">赞 44</button></footer></article><article data-post="p04" class="wb-post"><header class="wb-post-head"><span aria-hidden="true" class="avatar avatar-gray">微</span><div class="wb-post-meta"><span class="wb-user">微界新闻 <span class="wb-v">V</span></span><span class="wb-time">9 小时前 · 来自 微界网页版</span></div><button type="button" aria-label="更多" id="ijvyvk" class="wb-more">···</button></header><p class="wb-post-text">【本地】江湾路一带凌晨停电两小时，原因待查。受影响小区包括江湾公寓、河畔花园。</p><footer class="wb-post-actions"><a href="post-01.html" class="wb-action">评论 5</a><button type="button" class="wb-action">转发 12</button><button type="button" class="wb-action">赞 9</button></footer></article><button type="button" class="wb-loadmore">加载更多</button></main><aside class="wb-right"><section class="wb-card"><h2 class="wb-card-title">热搜榜 <a href="#">查看更多</a></h2><ol class="wb-hot"><li><a href="post-01.html">消防通道的门</a><span class="wb-hot-tag">热</span></li><li><a href="post-01.html">23:04 门禁记录</a></li><li><a href="post-01.html">江湾路停电</a></li><li><a href="post-01.html">货梯</a></li><li><a href="post-01.html">江边雾夜</a></li><li><a href="post-01.html">7 楼加班</a></li></ol></section><section class="wb-card"><h2 class="wb-card-title">可能感兴趣的人</h2><div class="wb-person"><span aria-hidden="true" class="avatar avatar-sm avatar-green">周</span><div class="wb-person-info"><strong>周叙</strong><span>共同关注 3 人</span></div><button type="button" class="btn btn-ghost btn-sm">关注</button></div><div class="wb-person"><span aria-hidden="true" class="avatar avatar-sm avatar-purple">匿</span><div class="wb-person-info"><strong>匿名用户</strong><span>共同关注 1 人</span></div><button type="button" class="btn btn-ghost btn-sm">关注</button></div><div class="wb-person"><span aria-hidden="true" class="avatar avatar-sm avatar-gray">微</span><div class="wb-person-info"><strong>微界新闻</strong><span>官方账号</span></div><button type="button" class="btn btn-ghost btn-sm">关注</button></div></section></aside></div><footer class="wb-footer"><div class="container"><a href="#">关于微界</a><a href="#">帮助中心</a><a href="#">隐私</a><p>微界 · 虚构平台 · 仅用于解谜 demo</p></div></footer>
 </body>
 </html>

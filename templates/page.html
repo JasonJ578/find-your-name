@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【页面标题】 · 微界</title>
+  <link rel="stylesheet" href="../assets/css/theme.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+</head>
+<body>
+<!-- PAGE-MODE: flow -->
+<!--
+  新页面模板。使用步骤：
+  1. 复制到目标目录，改名为英文小写 + 连字符，例如 weibo/post-02.html。
+  2. 改 <title>。
+  3. 只改 <main> 里的内容；页头和页脚保持结构，不要重写。
+  4. 需要交互的元素加 data-* 名字，名字定下后不要改。
+  5. 生成后运行 python tools/inline-css.py，把外链样式内联进页面。
+  6. 新闻 / 聊天页可以复制对应线的现有页面，不必强用这个模板。
+-->
+
+<header class="wb-header">
+  <div class="container wb-header-inner">
+    <a class="wb-logo" href="../index.html">
+      <span class="wb-logo-mark">微</span>
+      <span class="wb-logo-name">微界</span>
+    </a>
+    <div class="wb-search">
+      <input type="search" placeholder="搜索微界内容" aria-label="搜索">
+    </div>
+    <nav class="wb-header-actions" aria-label="顶部导航">
+      <a href="index.html">首页</a>
+      <a href="profile-01.html">我</a>
+      <span class="avatar avatar-sm avatar-blue" aria-hidden="true">林</span>
+    </nav>
+  </div>
+</header>
+
+<main class="wb-detail">
+  <a class="wb-back" href="index.html">← 返回首页</a>
+
+  <!-- CONTENT: 从这里开始写 -->
+  <article class="wb-post">
+    <header class="wb-post-head">
+      <span class="avatar avatar-blue" aria-hidden="true">林</span>
+      <div class="wb-post-meta">
+        <span class="wb-user">【用户名】</span>
+        <span class="wb-time">【时间】 · 来自 微界网页版</span>
+      </div>
+      <button class="wb-more" type="button" aria-label="更多">···</button>
+    </header>
+    <p class="wb-post-text">【正文】</p>
+  </article>
+  <!-- /CONTENT -->
+</main>
+
+<footer class="wb-footer">
+  <div class="container">
+    <a href="#">关于微界</a>
+    <a href="#">帮助中心</a>
+    <a href="#">隐私</a>
+    <p>微界 · 虚构平台 · 仅用于解谜 demo</p>
+  </div>
+</footer>
+
+</body>
+</html>
