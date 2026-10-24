@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>微界 · 首页</title>
+  <link rel="stylesheet" href="../assets/css/theme.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+</head>
+<body>
+<!-- PAGE-MODE: flow -->
+
+<header class="wb-header">
+  <div class="container wb-header-inner">
+    <a class="wb-logo" href="../index.html">
+      <span class="wb-logo-mark">微</span>
+      <span class="wb-logo-name">微界</span>
+    </a>
+    <div class="wb-search">
+      <input type="search" placeholder="搜索微界内容" aria-label="搜索">
+    </div>
+    <nav class="wb-header-actions" aria-label="顶部导航">
+      <a href="index.html">首页</a>
+      <a href="profile-01.html">我</a>
+      <span class="avatar avatar-sm avatar-blue" aria-hidden="true">林</span>
+    </nav>
+  </div>
+</header>
+
+<div class="wb-body">
+
+  <aside class="wb-left">
+    <div class="wb-mini">
+      <span class="avatar avatar-blue" aria-hidden="true">林</span>
+      <strong>林晚</strong>
+      <span>@linwan</span>
+    </div>
+    <nav class="wb-nav" aria-label="侧边导航">
+      <a class="is-active" href="index.html">首页</a>
+      <a href="#">发现</a>
+      <a href="#">消息 <span class="count">3</span></a>
+      <a href="profile-01.html">我</a>
+    </nav>
+  </aside>
+
+  <main class="wb-feed">
+    <section class="wb-composer" aria-label="发布">
+      <div class="wb-composer-row">
+        <span class="avatar avatar-blue" aria-hidden="true">林</span>
+        <textarea placeholder="有什么新鲜事想分享给大家？" aria-label="发布内容"></textarea>
+      </div>
+      <div class="wb-composer-bar">
+        <span>图片</span>
+        <span>视频</span>
+        <span>表情</span>
+        <button class="btn btn-sm" type="button">发布</button>
+      </div>
+    </section>
+
+    <nav class="wb-tabs" aria-label="信息流分类">
+      <a class="wb-tab is-active" href="#">全部</a>
+      <a class="wb-tab" href="#">关注</a>
+      <a class="wb-tab" href="#">推荐</a>
+    </nav>
+
+    <article class="wb-post" data-post="p01">
+      <header class="wb-post-head">
+        <a href="profile-01.html" aria-label="林晚的主页"><span class="avatar avatar-blue" aria-hidden="true">林</span></a>
+        <div class="wb-post-meta">
+          <a class="wb-user" href="profile-01.html">林晚 <span class="wb-v">V</span></a>
+          <span class="wb-time">3 小时前 · 来自 微界网页版</span>
+        </div>
+        <button class="wb-more" type="button" aria-label="更多">···</button>
+      </header>
+      <p class="wb-post-text">昨晚 23:40 我还在公司，整层楼只剩我一个。走的时候，<span class="hashtag">#消防通道</span> 的门是开着的。</p>
+      <div class="wb-post-media">
+        <div class="wb-media">图片占位 · 消防通道</div>
+      </div>
+      <footer class="wb-post-actions">
+        <a class="wb-action" href="post-01.html">评论 12</a>
+        <button class="wb-action" type="button">转发 4</button>
+        <button class="wb-action" type="button">赞 27</button>
+      </footer>
+    </article>
+
+    <article class="wb-post" data-post="p02">
+      <header class="wb-post-head">
+        <a href="profile-01.html" aria-label="周叙的主页"><span class="avatar avatar-green" aria-hidden="true">周</span></a>
+        <div class="wb-post-meta">
+          <a class="wb-user" href="profile-01.html">周叙</a>
+          <span class="wb-time">5 小时前 · 来自 微界网页版</span>
+        </div>
+        <button class="wb-more" type="button" aria-label="更多">···</button>
+      </header>
+      <p class="wb-post-text">凌晨的江边，雾很大。桥上有人站了很久，一动不动。<span class="hashtag">#江湾路</span></p>
+      <div class="wb-post-media is-2">
+        <div class="wb-media">图片占位 · 江边 1</div>
+        <div class="wb-media">图片占位 · 江边 2</div>
+      </div>
+      <footer class="wb-post-actions">
+        <a class="wb-action" href="post-01.html">评论 8</a>
+        <button class="wb-action" type="button">转发 2</button>
+        <button class="wb-action" type="button">赞 19</button>
+      </footer>
+    </article>
+
+    <article class="wb-post" data-post="p03">
+      <header class="wb-post-head">
+        <span class="avatar avatar-purple" aria-hidden="true">匿</span>
+        <div class="wb-post-meta">
+          <span class="wb-user">匿名用户</span>
+          <span class="wb-time">7 小时前 · 来自 微界网页版</span>
+        </div>
+        <button class="wb-more" type="button" aria-label="更多">···</button>
+      </header>
+      <p class="wb-post-text">7 楼的消防通道，昨晚有人进去过吗？门禁记录显示 <strong>23:04</strong> 有人刷过卡。</p>
+      <footer class="wb-post-actions">
+        <a class="wb-action" href="post-01.html">评论 31</a>
+        <button class="wb-action" type="button">转发 6</button>
+        <button class="wb-action" type="button">赞 44</button>
+      </footer>
+    </article>
+
+    <article class="wb-post" data-post="p04">
+      <header class="wb-post-head">
+        <span class="avatar avatar-gray" aria-hidden="true">微</span>
+        <div class="wb-post-meta">
+          <span class="wb-user">微界新闻 <span class="wb-v">V</span></span>
+          <span class="wb-time">9 小时前 · 来自 微界网页版</span>
+        </div>
+        <button class="wb-more" type="button" aria-label="更多">···</button>
+      </header>
+      <p class="wb-post-text">【本地】江湾路一带凌晨停电两小时，原因待查。受影响小区包括江湾公寓、河畔花园。</p>
+      <footer class="wb-post-actions">
+        <a class="wb-action" href="post-01.html">评论 5</a>
+        <button class="wb-action" type="button">转发 12</button>
+        <button class="wb-action" type="button">赞 9</button>
+      </footer>
+    </article>
+
+    <button class="wb-loadmore" type="button">加载更多</button>
+  </main>
+
+  <aside class="wb-right">
+    <section class="wb-card">
+      <h2 class="wb-card-title">热搜榜 <a href="#">查看更多</a></h2>
+      <ol class="wb-hot">
+        <li><a href="post-01.html">消防通道的门</a><span class="wb-hot-tag">热</span></li>
+        <li><a href="post-01.html">23:04 门禁记录</a></li>
+        <li><a href="post-01.html">江湾路停电</a></li>
+        <li><a href="post-01.html">货梯</a></li>
+        <li><a href="post-01.html">江边雾夜</a></li>
+        <li><a href="post-01.html">7 楼加班</a></li>
+      </ol>
+    </section>
+
+    <section class="wb-card">
+      <h2 class="wb-card-title">可能感兴趣的人</h2>
+      <div class="wb-person">
+        <span class="avatar avatar-sm avatar-green" aria-hidden="true">周</span>
+        <div class="wb-person-info"><strong>周叙</strong><span>共同关注 3 人</span></div>
+        <button class="btn btn-ghost btn-sm" type="button">关注</button>
+      </div>
+      <div class="wb-person">
+        <span class="avatar avatar-sm avatar-purple" aria-hidden="true">匿</span>
+        <div class="wb-person-info"><strong>匿名用户</strong><span>共同关注 1 人</span></div>
+        <button class="btn btn-ghost btn-sm" type="button">关注</button>
+      </div>
+      <div class="wb-person">
+        <span class="avatar avatar-sm avatar-gray" aria-hidden="true">微</span>
+        <div class="wb-person-info"><strong>微界新闻</strong><span>官方账号</span></div>
+        <button class="btn btn-ghost btn-sm" type="button">关注</button>
+      </div>
+    </section>
+  </aside>
+
+</div>
+
+<footer class="wb-footer">
+  <div class="container">
+    <a href="#">关于微界</a>
+    <a href="#">帮助中心</a>
+    <a href="#">隐私</a>
+    <p>微界 · 虚构平台 · 仅用于解谜 demo</p>
+  </div>
+</footer>
+
+</body>
+</html>

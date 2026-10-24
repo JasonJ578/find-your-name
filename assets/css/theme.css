@@ -1,0 +1,28 @@
+:root {
+  --bg: #f2f3f5;
+  --surface: #ffffff;
+  --surface-2: #f7f8fa;
+  --text: #1f2329;
+  --text-2: #4e5969;
+  --muted: #8a919c;
+  --line: #e5e6eb;
+  --brand: #ff8200;
+  --brand-strong: #e67300;
+  --brand-soft: #fff3e6;
+  --hot: #eb7350;
+  --link: #1a6fd4;
+  --ok: #2b8a3e;
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --maxw: 1120px;
+  --header-h: 56px;
+  --font: system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+}
