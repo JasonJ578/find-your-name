@@ -485,12 +485,18 @@ def build(markdown: str, title: str, subtitle: str) -> Document:
             text = list_match.group(3).strip()
 
             if marker in ("-", "*") and text.startswith("[ ] "):
-                paragraph = doc.add_paragraph(style="List Bullet" if indent < 2 else "List Bullet 2")
+                paragraph = doc.add_paragraph()
+                paragraph.paragraph_format.left_indent = Cm(0.75 + indent * 0.2)
+                paragraph.paragraph_format.first_line_indent = Cm(-0.5)
+                paragraph.paragraph_format.space_after = Pt(2)
                 run = paragraph.add_run("□ ")
                 set_run_font(run, FONT_SYMBOL, 10.5, color=MUTED)
                 add_inline(paragraph, text[4:])
             elif marker in ("-", "*") and text.startswith("[x] "):
-                paragraph = doc.add_paragraph(style="List Bullet" if indent < 2 else "List Bullet 2")
+                paragraph = doc.add_paragraph()
+                paragraph.paragraph_format.left_indent = Cm(0.75 + indent * 0.2)
+                paragraph.paragraph_format.first_line_indent = Cm(-0.5)
+                paragraph.paragraph_format.space_after = Pt(2)
                 run = paragraph.add_run("☑ ")
                 set_run_font(run, FONT_SYMBOL, 10.5, color=BRAND)
                 add_inline(paragraph, text[4:])
