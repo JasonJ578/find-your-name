@@ -10,4 +10,5 @@ node_modules/
 __pycache__/
 *.pyc
 .html-workbench/
+.dsh-office-*/
 docs/交接-本地.md
