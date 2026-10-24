@@ -532,8 +532,11 @@ def main():
         markdown = source_path.read_text(encoding="utf-8")
         document = build(markdown, title, subtitle)
         output_path = OUT_DIR / output_name
-        document.save(output_path)
-        print(f"built: {output_path.relative_to(ROOT)}")
+        try:
+            document.save(output_path)
+            print(f"built: {output_path.relative_to(ROOT)}")
+        except PermissionError:
+            print(f"locked, skipped: {output_path.name}（关掉 Word 后重跑）")
 
 
 if __name__ == "__main__":
